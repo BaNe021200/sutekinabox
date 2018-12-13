@@ -1,0 +1,28 @@
+{% extends "base.html.twig" %}
+{% set isSelected= isSelected() %}
+{% block styleSheet %}
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/starter-template.css') }}" rel="stylesheet">
+{% endblock styleSheet %}
+
+
+
+
+
+{% block body %}
+    {% include 'components/_nav.html.twig' %}
+    {% block content '' %}
+{% endblock body %}
+
+
+
+{% block script %}
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="{{ asset('js/jquery-slim.min.js') }}"><\/script>')</script>
+    <script src="{{ asset('js/popper.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/holder.min.js') }}"></script>
+{% endblock script %}
+
+
+

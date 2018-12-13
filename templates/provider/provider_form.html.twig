@@ -1,0 +1,20 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-sm-12">
+                <h3>Enregister un fournisseur</h3>
+
+
+                {{ form(form, {attr:{novalidate: 'novalidate' }}) }}
+            </div>
+            {#{{ render(controller('App\\Controller\\TechNews\\FrontController::sidebar')) }}#}
+        </div>
+    </div>
+{% endblock %}

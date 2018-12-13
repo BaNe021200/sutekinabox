@@ -1,0 +1,70 @@
+{% extends "layout.html.twig" %}
+
+{% block test %}
+    {% for product in products %}
+    {% dump(product.boxes) %}
+{% endfor %}
+
+{% endblock test %}
+
+
+
+
+
+{% block content %}
+
+
+
+    <h3 class="text-center">liste des produits disponibles</h3>
+    <div class="container">
+
+
+        <table class="table table-hover">
+            <thead>
+            <tr class="table-primary-primary">
+                <th scope="col">id produit</th>
+                <th scope="col">Nom du produit</th>
+                <th scope="col">prix</th>
+                <th scope="col">le produit est disponible</th>
+                <th scope="col">selectionner dans la boxe</th>
+                <th scope="col">Quantité en stock</th>
+
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for product in products %}
+
+                {% if product.productDisponibility %}
+                    <tr class="table-success">
+                {% else %}
+                    <tr class="table-danger">
+                {% endif %}
+
+                <th scope="row">{{ product.id }}</th>
+                <td class="text-center">{{ product.productName }}</td>
+                <td class="text-center">{{ product.prix }} €</td>
+                <td class="text-center"> {{ product.getProductDisponibility ? 'oui' : 'non' }}</td>
+                <td class="text-center">
+
+                    {% if not product.isSelected(1)  %}
+
+                        <a class="btn btn-primary" href="{{ path('selectedProduct',{id: product.id }) }}" role="button">Sélectionner le produit</a>
+                    {% else %}
+                        oui
+                    {% endif %}
+
+
+                    {#{{ product.getProductConformity ? 'oui' : 'non' }}#}</td>
+                <td>{{ product.quantity }}</td>
+
+
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+
+    </div>
+
+{% endblock content %}
