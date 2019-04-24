@@ -9,6 +9,7 @@
 namespace App\Service\Twig;
 
 
+use App\Entity\Box;
 use App\Repository\BoxRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -30,16 +31,16 @@ class AppExtension extends AbstractExtension
         $this->session=$session;
     }
 
-    public function getFunctions()
+    /*public function getFunctions()
     {
         return[
             new \Twig_Function('isSelected',function (){
-                return $this->em->getRepository(BoxRepository::class)
+                return $this->em->getRepository(Box::class)
                     ->findByProduct();
             })
 
         ];
-    }
+    }*/
 
 
 }

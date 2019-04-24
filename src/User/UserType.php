@@ -10,7 +10,9 @@ namespace App\User;
 
 
 use App\Entity\User;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -46,6 +48,16 @@ class UserType extends AbstractType
                 'attr' => [
                     'placeholder' => 'Saisissez votre mot de passe'
                 ]
+            ])
+            ->add('roles',ChoiceType::class,[
+
+                'choices'=>[
+                    'provider' =>'ROLE_PROVIDER',
+                    'achat'=>'ROLE_ACHAT',
+                    'marketing' => 'ROLE_MARKETING'],
+                'multiple' => true,
+                'expanded' =>false
+                //'class' =>User::class
             ])
 
             ->add('submit', SubmitType::class, [
